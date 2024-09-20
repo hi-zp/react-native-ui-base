@@ -305,7 +305,10 @@ props: Dictionary<any>): ExtractedStyle {
     if (options.backgroundColor) {
       if (BACKGROUND_COLOR_KEYS_PATTERN.test(propKey)) {
         const key = propKey.replace(BACKGROUND_COLOR_KEYS_PATTERN, '');
-        style.backgroundColor = Colors[key] as string;
+        let color = Colors[key] as string;
+        if (color) {
+          style.backgroundColor = color;
+        }
       }
     }
 

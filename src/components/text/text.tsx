@@ -1,10 +1,9 @@
 import { forwardRef, useMemo } from 'react';
-import { Text as RNText, StyleSheet, type StyleProp, type TextStyle } from 'react-native';
+import { I18nManager, Platform, Text as RNText, StyleSheet, type StyleProp, type TextStyle } from 'react-native';
 import type { TextProps } from './text.props';
 import useThemeProps from '../../hooks/useThemeProps';
 import useModifiers from '../../hooks/useModifiers';
 import { Colors } from '../../style';
-import { Constants } from '../../commons';
 
 const modifiersOptions = {
   color: true,
@@ -81,9 +80,9 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: 'transparent',
     color: Colors.$textDefault,
-    ...(Constants.isIOS
+    ...(Platform.OS === 'ios'
       ? {
-        writingDirection: Constants.isRTL ? writingDirectionTypes.RTL : writingDirectionTypes.LTR
+        writingDirection: I18nManager.isRTL ? writingDirectionTypes.RTL : writingDirectionTypes.LTR
       }
       : {
         textAlign: 'left'

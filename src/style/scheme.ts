@@ -1,5 +1,4 @@
-import { Appearance, PlatformColor } from 'react-native';
-import Constants from '../commons/Constants';
+import { Appearance, Platform, PlatformColor } from 'react-native';
 import Config from '../commons/Config';
 
 export type Schemes = {
@@ -93,7 +92,7 @@ class Scheme {
             get: () => {
               let color: any = scheme[colorKey];
               if (Config.usePlatformColors) {
-                if (Constants.isAndroid) {
+                if (Platform.OS === 'android') {
                   // Remove the $ prefix cause it's not allowed in Android and add the @color prefix
                   color = PlatformColor(
                     `@color/${colorKey.replace(/^[$]/, '')}`

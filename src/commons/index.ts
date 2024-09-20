@@ -1,4 +1,3 @@
-export {default as Constants} from './Constants';
 export {default as Config} from './Config';
 
 export type {
